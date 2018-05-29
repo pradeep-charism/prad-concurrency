@@ -2,7 +2,7 @@ package threads;
 
 import java.util.Arrays;
 
-public class GreetingCountries {
+public class ThreadGreetingCountries {
 
     public static class GreetingThread extends Thread {
 
