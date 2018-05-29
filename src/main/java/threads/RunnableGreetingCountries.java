@@ -1,6 +1,7 @@
 package threads;
 
 import java.util.Arrays;
+import java.util.concurrent.TimeUnit;
 
 public class RunnableGreetingCountries {
 
@@ -15,7 +16,12 @@ public class RunnableGreetingCountries {
         @Override
         public void run() {
             long id = Thread.currentThread().getId();
-            System.out.println(id + ": Hello " + country + "!");
+            try {
+                TimeUnit.MILLISECONDS.sleep(3);
+                System.out.println(id + ": Hello " + country + "!");
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 
