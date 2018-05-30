@@ -1,6 +1,5 @@
 package threads.sleepinterrupt;
 
-import java.sql.Time;
 import java.util.concurrent.TimeUnit;
 
 public class Customer implements Runnable {
