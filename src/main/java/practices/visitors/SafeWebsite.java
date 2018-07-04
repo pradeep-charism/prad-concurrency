@@ -6,7 +6,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class SafeWebsite implements Website{
 
-    public static int visitors = 0;
+    public int visitors = 0;
 
     public static Set<Integer> allVisitors = new HashSet<>();
 
