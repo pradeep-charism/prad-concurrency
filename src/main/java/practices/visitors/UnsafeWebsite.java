@@ -22,4 +22,14 @@ public class UnsafeWebsite implements Website{
         }
         return id;
     }
+
+    @Override
+    public void get(String country, int id) {
+
+    }
+
+    @Override
+    public void put(String country, int id) {
+
+    }
 }

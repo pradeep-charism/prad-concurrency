@@ -16,7 +16,8 @@ public class Hacker implements Callable<String> {
     public String call() throws Exception {
         while (true){
             int id = website.registerVisitors(country);
-            System.out.println("Hacker: "+ id + " Country: "+ country);
+//            System.out.println("Hacker: "+ id + " Country: "+ country);
+            website.get(country, id);
         }
     }
 }

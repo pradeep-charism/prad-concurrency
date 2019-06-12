@@ -2,17 +2,16 @@ package practices.visitors;
 
 import java.util.HashSet;
 import java.util.Set;
-import java.util.concurrent.atomic.AtomicInteger;
 
-public class SafeWebsiteAtomic implements Website{
+public class SafeWebsiteSynchronized implements Website{
 
-    public AtomicInteger visitors = new AtomicInteger();
+    public int visitors = 0;
 
     public static Set<Integer> allVisitors = new HashSet<>();
 
     @Override
     public int registerVisitors(String country) {
-        int id = visitors.incrementAndGet();
+        int id = getId();
         try {
             if (allVisitors.contains(id)) {
                 System.out.println("Duplicate visitor registration..."+ id+ " from: "+ country);
@@ -35,5 +34,9 @@ public class SafeWebsiteAtomic implements Website{
     @Override
     public void put(String country, int id) {
 
+    }
+
+    private synchronized int getId() {
+        return visitors++;
     }
 }

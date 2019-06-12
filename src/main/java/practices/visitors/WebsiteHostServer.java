@@ -9,7 +9,7 @@ import java.util.concurrent.Future;
 
 public class WebsiteHostServer {
 
-    static final int NUM_OF_THREADS = 100;
+    static final int NUM_OF_THREADS = 10;
     static final boolean SAFE_SITE = true;
 
     public static void main(String[] args) {
@@ -19,15 +19,9 @@ public class WebsiteHostServer {
         ExecutorService executorService = Executors.newFixedThreadPool(NUM_OF_THREADS);
         for (int i = 0; i < NUM_OF_THREADS; i++) {
             callables.add(new Visitor(website, "Singapore"));
+            callables.add(new Hacker(website, "Singapore"));
             callables.add(new Visitor(website, "Australia"));
-            callables.add(new Visitor(website, "UK"));
-            callables.add(new Visitor(website, "Sweden"));
-            callables.add(new Hacker(website, "India"));
-            callables.add(new Visitor(website, "US"));
-            callables.add(new Visitor(website, "Canada"));
-            callables.add(new Hacker(website, "China"));
-            callables.add(new Visitor(website, "Ireland"));
-            callables.add(new Hacker(website, "Russia"));
+            callables.add(new Hacker(website, "Australia"));
         }
 
         try {
@@ -35,6 +29,19 @@ public class WebsiteHostServer {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    private static void differentCounteries(List<Callable<String>> callables, Website website) {
+        callables.add(new Visitor(website, "Singapore"));
+        callables.add(new Visitor(website, "Australia"));
+        callables.add(new Visitor(website, "UK"));
+        callables.add(new Visitor(website, "Sweden"));
+        callables.add(new Hacker(website, "India"));
+        callables.add(new Visitor(website, "US"));
+        callables.add(new Visitor(website, "Canada"));
+        callables.add(new Hacker(website, "China"));
+        callables.add(new Visitor(website, "Ireland"));
+        callables.add(new Hacker(website, "Russia"));
     }
 
     private static Website getWebsite(boolean isSafeSite) {

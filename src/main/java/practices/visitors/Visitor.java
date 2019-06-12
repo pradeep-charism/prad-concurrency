@@ -16,7 +16,8 @@ public class Visitor implements Callable<String> {
     public String call() throws Exception {
         while (true) {
             int id = website.registerVisitors(country);
-            System.out.println("Visitor: " + id + " Country: " + country);
+//            System.out.println("Visitor: " + id + " Country: " + country);
+            website.put(country, id);
         }
     }
 }
